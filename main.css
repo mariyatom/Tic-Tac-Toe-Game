@@ -1,0 +1,35 @@
+/* changed background colour from rgb(161, 245, 78)
+    and added font-family */
+
+    body {
+        background-color: #fffffe;
+        font-family: "Walter Turncoat", cursive;
+      }
+      
+      table {
+        margin-right: center;
+        margin-left: center;
+        margin: 0 auto;
+      }
+      
+      
+      /* decreased font-size from 8 to 4
+          added font color */
+      h1 {
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 4vw;
+        color: #000000;
+      }
+      
+      /* also increased font-size from 100% 
+         and added font colour and background colour*/
+      td {
+        width: 8vw;
+        height: 8vw;
+        text-align: center;
+        font-size: 300%;
+        background-color:  #16161a;
+        color: #E8E8E8;
+      }
