@@ -141,4 +141,8 @@ function checkForWin(symb) {
         updateheaderText("UH OH! STALEMATE!")
       }
     }
+
+    function sayHello () {
+        console.log("hello")
+    }
 }
