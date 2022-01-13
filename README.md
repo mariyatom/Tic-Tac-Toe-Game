@@ -113,7 +113,24 @@ for (let i = 0; i < cells.length; i++) {
 }
 ```
 
-Isn't it beautiful? Yes; that was not a trick question. But we're meant to be playing _Tic Tac Toe_ here, not saying hello. Next we're going to look at keeping track of whose turn it is and actually putting the Xs or Os into the cells. 
+Isn't it beautiful? Yes; that was not a trick question. But we're meant to be playing _Tic Tac Toe_ here, not saying hello. Next we're going to look at keeping track of whose turn it is, and actually putting the Xs or Os into the cells. 
+
+## keeping track of the turns
+
+This step isn't going to be too tricky. It's either going to be O's turn, or it's not. True or false! Sounds like a boolean. It might look something like: 
+
+`let noughtsTurn = true`  
+
+Now every time someone makes a move, all we need to do is toggle that variable state to keep track of the next player's turn. *Tip! You can toggle a boolean with this nifty hack: 
+
+`noughtsTurn = !noughtsTurn`
+
+If it's true, that line will set it false, if it's false, it will set it true!
+But where is that going to happen? It needs to happen every time a player clicks on a cell, but _only_ if it's a valid move. IE, a cell that doesn't already have an X or and O in it. Let's dive into that now. 
+
+## keeping track of the turns
+
+
 
 
 ## Stretch ideas
