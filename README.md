@@ -121,14 +121,32 @@ This step isn't going to be too tricky. It's either going to be O's turn, or it'
 
 `let noughtsTurn = true`  
 
-Now every time someone makes a move, all we need to do is toggle that variable state to keep track of the next player's turn. *Tip! You can toggle a boolean with this nifty hack: 
+Now every time someone makes a move, all we need to do is toggle that variable state to keep track of the next player's turn. *Tip! You can toggle a boolean "on and off" with this nifty hack: 
 
 `noughtsTurn = !noughtsTurn`
 
 If it's true, that line will set it false, if it's false, it will set it true!
 But where is that going to happen? It needs to happen every time a player clicks on a cell, but _only_ if it's a valid move. IE, a cell that doesn't already have an X or and O in it. Let's dive into that now. 
 
-## keeping track of the turns
+## The cellClicked() function
+
+Now we're going to write the _real_ function that will execute when you click on a cell. No more of this sayHello business. In programming there is a concept called a ["stub"](https://en.wikipedia.org/wiki/Method_stub). As with so many things in the coding world, "stub" can mean a few different (but similar) things. In this context, "stub" refers to a function that will _eventially_ do what you want it to do, but in the mean time acts as a placeholder of sorts. It might look like: 
+
+```game.js
+function cellClicked(e) {
+
+    let cell = e.target
+    console.log("i clicked on: " + cell)
+
+}
+```
+
+Then, back inside your loop from earlier, you would replace `onclick = sayHello` with `onclick = cellClicked`. This is another reason why [DRY code](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) is best. Instead of having to remember and find every time you bound the onclick method, changing that single line in the loop changes it for every cell on the board. 
+
+Now you might be wondering, what is going on with that `(e)` argument, and what is `e.target`? The `e` stands for event, it is a secret argument that Javascript _automatically_ slips into every function executed by an `.onclick` method. It's a little sneaky, because it happens magically behind the scenes. You can read more about [DOM events here](https://www.w3schools.com/jsref/dom_obj_event.asp). But the TL;DR of the situation is that they are **huge** objects that contain heaps of information about everything that happened the moment you clicked on that HTML element- including, most importantly for us, _which_ HTML element you clicked on. This is important for what we're trying to do, because we need to know _which_ cell to put an X or an O inside. 
+
+The specific HTML element you clicked on is called the `target` of the click event, so by saying `let cell = e.target`, we can create a new variable representing the cell we clicked on. If you open `index.html` in your browser now and look in the developer tools Console, you should be able to click on cells and see that `"i clicked on: " + cell` message popping up. 
+
 
 
 
