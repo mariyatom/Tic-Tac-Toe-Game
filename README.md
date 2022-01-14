@@ -147,7 +147,34 @@ Now you might be wondering, what is going on with that `(e)` argument, and what 
 
 The specific HTML element you clicked on is called the `target` of the click event, so by saying `let cell = e.target`, we can create a new variable representing the cell we clicked on. If you open `index.html` in your browser now and look in the developer tools Console, you should be able to click on cells and see that `"i clicked on: " + cell` message popping up. 
 
+## The cellClicked() function PART II
 
+Now we're going to practice another crucial skill when it comes to writing more complicated algorithms. [PSEUDO CODE](https://www.geeksforgeeks.org/how-to-write-a-pseudo-code/). It often takes new programmers a long time to embrace pseudocode. They just dive right into writing the function with a very blurry understanding of what they actually want to happen. Bashing at the keys in what you might call the "Infinate Monkeys, Infinate Typewriters" technique. It's like driving in roughly the right direction with a vague idea of where you want to end up. You'll probably get there eventially, but it will take a _lot_ longer, and realizing that you have been driving down the wrong street for 20 minutes is extremely frustrating. So... don't do that! Make a plan, even just a few bullet points, before you start driving. 
+
+Here is some pseudocode for the `cellClicked(e)` function: 
+
+```game.js
+
+// function for handling clicks on cells
+function cellClicked(e) {
+
+    // create a variable for the clicked cell so i can do stuff with it
+
+    // only put something in the cell if it's empty (by checking it's .innerHTML property)
+
+    // figure out which symbol to put inside the cell (X or O based on the naughtsTurn Boolean) 
+
+    // put the symbol inside the cell (by using .innerHTML again)
+
+    // check to see if the player won with that move (probably using a new funciton, like checkForWin() which i'll need to write later)
+
+    // switch which players turn it is (using the naughtsTurn boolean again)
+
+    // update the text at the top of the page saying whos turn it is now
+}
+```
+
+Writing that psuedocode took maybe a minute. It will probably take you a little longer when you're new to programming, but still. Taking a little time to plan your journey before you start actually writing code saves you an _immense_ amount of time and frustration in the long run. **So remember to do it!**
 
 
 
