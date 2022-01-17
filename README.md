@@ -176,6 +176,36 @@ function cellClicked(e) {
 
 Writing that psuedocode took maybe a minute. It will probably take you a little longer when you're new to programming, but still. Taking a little time to plan your journey before you start actually writing code saves you an _immense_ amount of time and frustration in the long run. **So remember to do it!**
 
+## Turning the psudocode into CODE 
+
+We're going to let you tackle writing the real contense of `cellClicked(e)` yourself, but here are a few tips based on the psuedocode:
+
+- create a variable for the clicked cell so i can do stuff with it
+    We covered this one already with the `e.target`!
+
+- only put something in the cell if it's empty (by checking it's .innerHTML property)
+    You can check to see if an HTML element is empty like `myVariableName.innerHTML == ""`
+
+- figure out which symbol to put inside the cell (X or O based on the naughtsTurn Boolean) 
+    This could be a great time to practice using the [Ternary Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator). 
+
+- put the symbol inside the cell (by using .innerHTML again)
+    Once you've figured out which symbol (X or O) to put inside the cell (and which cell to put it into), putting it in there is straightforward using .innerHTML.
+
+- check to see if the player won with that move (probably using a new funciton, like checkForWin() which i'll need to write later)
+    You could create a stub `checkForWin()` function with nothing inside it for the time being, making the real function is the next step.
+
+- switch which players turn it is (using the naughtsTurn boolean again)
+    Refer back to the `!=` boolean trick from earlier.
+
+- update the text at the top of the page saying whos turn it is now
+    Refer back to how we updated HTML text in the Javascript Cafe challenge from sprint 3.
+
+Once you've worked through those bullet points, you should now be able to play tic tac toe! However, there's no winning yet. You can just put the Xs and Os into the cells anywhere you want. Now it's time for the hardest part! You need to write an algorithm that looks through the array of cells and tries to find three in a row. Let's do it.
+
+## The checkForWin() function
+
+
 
 
 ## Stretch ideas
