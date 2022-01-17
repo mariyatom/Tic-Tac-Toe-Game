@@ -205,7 +205,23 @@ Once you've worked through those bullet points, you should now be able to play t
 
 ## The checkForWin() function
 
+So what's the first step when it comes to writing this new function?
+Ooooo you guessed it, Psuedocode! What might that look like? 
 
+```game.js
+function checkForWin(symb) {
+
+    // the function takes a string as an argument ("X" or "O")
+    // it needs to check if that symbol appears three times in a row in the board cells
+    // it will need to check for horizontal, vertical AND diaognal victories
+    // if we found three of the same symbol in a row, the game is over
+    // update the header text with the winner
+}
+```
+
+So that's all well and good, but you're probably thinking _how_?? How can we check to see if the symbol is appearing three times in a row?
+
+![Board Diagram](./images/board-diagram.png)
 
 
 ## Stretch ideas
