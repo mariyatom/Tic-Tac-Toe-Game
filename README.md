@@ -212,17 +212,70 @@ Ooooo you guessed it, Psuedocode! What might that look like?
 function checkForWin(symb) {
 
     // the function takes a string as an argument ("X" or "O")
+
     // it needs to check if that symbol appears three times in a row in the board cells
+    
     // it will need to check for horizontal, vertical AND diaognal victories
+
+    // a boolean to keep track of if we found a winning line of symbols (like let gameIsOver = false/true)
+
     // if we found three of the same symbol in a row, the game is over
+
     // update the header text with the winner
+    
 }
 ```
 
-So that's all well and good, but you're probably thinking _how_?? How can we check to see if the symbol is appearing three times in a row?
+So that's all well and good, but you're probably thinking _how_?? How can we check to see if the symbol is appearing three times in a row? Well, just like earlier when we used `.innerHTML` to check if a cell was empty, we can also use it to check _what_ is inside the element. Ie, `cell.innerHTML == "X"`. We have access to all of the cells on the board inside the `cells` array that we created at the start of the challenge. Refer to this beautiful diagram for a visual representation of which array element equals which cell: 
 
 ![Board Diagram](./images/board-diagram.png)
 
+So, armed with this knowledge, we can construct `if()` statements that check to see if three cells in a row all contain the "X" or "O" symbol argument string that we're passing into this function. 
+We're going to show you what that could look like for a horizontal victory, and let you tackle the vertical and diagonal victories yourself: 
+
+```game.js
+
+function checkForWin(symb) {
+
+    let gameIsOver = false
+
+    // HORIZONTAL LINES //
+    if (cells[0].innerHTML == symb && cells[1].innerHTML == symb && cells[2].innerHTML == symb)
+        gameIsOver = true
+
+    else if (cells[3].innerHTML == symb && cells[4].innerHTML == symb && cells[5].innerHTML == symb)
+        gameIsOver = true
+
+    else if (cells[6].innerHTML == symb && cells[7].innerHTML == symb && cells[8].innerHTML == symb)
+        gameIsOver = true
+
+    // VERTICAL LINES //
+
+    // ...
+
+    // DIAGONAL LINES //
+
+    // ...
+
+    if (gameIsOver) {
+        // update the header text
+    }
+
+}
+
+```
+
+Good luck!
+
+## Bugs?
+
+All going well, you might have a working version of Tic Tac Toe now! Play it! Is anything not working how you think it should? Bugs are aboslutely unavoidable when you're programming. You are a bug producing machine- constantly creating little typos and logical errors into everything you do. The process of going through, testing what you made, finding the mistakes and fixing them is a crucial skill. Practice it!
+
+## Wrap up
+
+Read your code again from top to bottom and make sure you understand everything that is happening. If it's still feeling mysterious to you, _delete it all_ and do it again. Repitition is key when it comes to learning new and complicated things. Take some time to reflect on what you did in this challenge and what you learned. 
+
+Congratulations! You made a videogame. Check out some of these stretch feature suggestions if you would like to keep working on this project, and move onto the next exercise whenever you're ready. 
 
 ## Stretch ideas
 
