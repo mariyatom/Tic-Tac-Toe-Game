@@ -187,11 +187,11 @@ function cellClicked(e) {
   if (cell.innerHTML == "" && !gameIsOver) {
     let symb = getCurrentPlayerSymbol()
     cell.innerHTML = symb
-    let headerStr = getCurrentPlayerSymbol() + "'S TURN"
-    updateheaderText(headerStr)
     checkForWin(symb)
     if (!gameIsOver) {
       noughtsTurn = !noughtsTurn
+      let headerStr = getCurrentPlayerSymbol() + "'S TURN"
+      updateheaderText(headerStr)
     }
   }
 }

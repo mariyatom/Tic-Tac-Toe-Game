@@ -1,35 +1,62 @@
-/* changed background colour from rgb(161, 245, 78)
-    and added font-family */
+/* Game board and text not responsive yet*/
 
-    body {
-        background-color: #fffffe;
-        font-family: "Walter Turncoat", cursive;
-      }
-      
-      table {
-        margin-right: center;
-        margin-left: center;
-        margin: 0 auto;
-      }
-      
-      
-      /* decreased font-size from 8 to 4
-          added font color */
-      h1 {
-        text-align: center;
-        margin-top: 0;
-        margin-bottom: 0;
-        font-size: 4vw;
-        color: #000000;
-      }
-      
-      /* also increased font-size from 100% 
-         and added font colour and background colour*/
-      td {
-        width: 8vw;
-        height: 8vw;
-        text-align: center;
-        font-size: 300%;
-        background-color:  #16161a;
-        color: #E8E8E8;
-      }
+body {
+  background-color: rgba(0, 88, 229, 0.553);
+  font-family: 'Permanent Marker', cursive;
+  text-align: center;
+  }
+  
+table {
+    margin-right: center;
+    margin-left: center;
+    margin: 0 auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  
+
+h1 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 2vw;
+    color: black;
+  }
+  
+td {
+    width: 8vw;
+    height: 8vw;
+    text-align: center;
+    font-size: 300%;
+    border: black solid 3px;
+    color: black;
+  }
+
+/* styling paper background*/
+#paper {
+  width: 600px;
+  height: 700px;
+  position: relative;
+  margin: 40px auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: white;
+  box-shadow: 0px 0px 5px 0px #888;
+}
+
+/* styling red vertical line */
+#paper::before {
+  content: '';
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 40px;
+  background-color: rgba(255,0,0,0.6);
+}
+
+/* styling blue horizontal lines */
+#pattern {
+  height: 100%;
+  background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
+}
