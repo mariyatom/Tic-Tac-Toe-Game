@@ -9,16 +9,16 @@
     - Event Listeners
 - Create multiple small functions
 - Debug code you have written
-- Practice working with more complex algorithms
-- Know when to ask for help, and don't stay stuck for too long
+- Practise working with more complex algorithms
+- Know when to ask for help, and don't stay stuck for too long.
  
 ## Summary
  
-Today we're going to build an all time classic game, Tic-Tac-Toe! All of the coding practice you have done so far in sprint 3 and 4 has been fairly on the rails, so in this challenge we're going to give you a blank page and more freedom to tackle the problem in your own way. This is an exercise in problem solving and algorithmic thinking. This README provides instructions for _a_ possible solution... but! As always with programming, there are a many different ways you could build Tic-Tac-Toe. If you have some programming experience already, and want to go off the beaten path to solve this challenge - go for it.
+Today we're going to build an all time classic game, Tic-Tac-Toe! All of the coding practice you have done so far in Sprints 3 and 4 has been fairly on the rails, so in this challenge we're going to give you a blank page and more freedom to tackle the problem in your own way. This is an exercise in problem solving and algorithmic thinking. This README provides instructions for _one_ possible solution but(!) as always with programming, there are a many different ways you could build Tic-Tac-Toe. If you have some programming experience already and want to go off the beaten path to solve this challenge - go for it!
  
 ## See it in action
  
-If somehow you have made it this far in life without encountering Tic-Tac-Toe (AKA Noughts and Crosses, or Xs and Os), you can check it out [here](https://playtictactoe.org/).
+If somehow you have made it this far in life without encountering Tic-Tac-Toe (AKA Noughts and Crosses, or X's and O's), you can check it out [here](https://playtictactoe.org/).
  
 ## Timebox
  
@@ -39,14 +39,14 @@ Reflect | 20 minutes
  
 Here is an overview of things that the finished Tic-Tac-Toe game will need. We'll tackle them one by one.
  
-- An array containing all the squares on the board. We'll need this to get the Xs and Os displaying on the page, and also to check which player has won.
+- An array containing all the squares on the board. We'll need this to get the X's and O's displaying on the page, and also to check which player has won.
 - The ability to click the squares (which are HTML `TD` elements) and put either an X or an O into them.
 - A boolean to keep track of whose turn it is, X or O, and logic to switch turns once a player makes a move.  
 - A way to display whose turn it is at the top of the page.
 - A function for checking to see if anyone has won. For example, the same symbol 3 times horizontally, vertically or diagonally. (This is the hard bit).
 - Logic to display "___ WON!" at the top of the page when a player wins.
  
-## An array of TDs (AKA the board & cells)
+## An array of TD's (AKA the board & cells)
 An [HTML Table](https://www.w3schools.com/html/html_tables.asp) is a fairly common way of displaying spreadsheet style data on the web. It has `TR` children elements, which is short for 'Table Row'. Those `TR` elements in turn have `TD` children elements. TD is short for 'Table Data' and it's the part we're really interested in here. Our board for Tic-Tac-Toe is nine `TD` elements in total. As with all HTML elements, we can access and edit their properties using JavaScript.
  
 For example, if I had a variable representing a particular cell (`TD`) in an HTML table, I could edit what is inside the cell by accessing it's `.innerHTML` property like this:
@@ -56,10 +56,10 @@ For example, if I had a variable representing a particular cell (`TD`) in an HTM
 Which is the equivalent of `<td>X</td>` or `<td>O</td>` if we were writing it straight into the HTML file.
 `.innerHTML` literally means "what is inside the HTML tag".
  
-So with that info, we now know how to put Xs or Os into any particular cell, but how do we know _which_ cell to put them into, and when it should happen?
+So with that info, we now know how to put X's or O's into any particular cell, but how do we know _which_ cell to put them into, and when it should happen?
 This is where the _array of cells_ we mentioned earlier (in our overview) comes in. If we had an array of all the `TD` elements, we could "bind a function to their onclick method" - which is a complicated way of saying: "when I click on something, something happens".
  
-So how do we get the array of all the cells? Luckily, this is a pretty common desire in programming. You've probably seen `document.getElementById()` before, which we can use to get back a single HTML element using its `ID`. There is another handy method called [document.getElementsByTagName()](https://www.w3schools.com/jsref/met_document_getelementsbytagname.asp), which gives us back _an array of every element of a certain type_. For example, give me all the `<p>` tags, or all the `<h1>` tags.
+So how do we get the array of all the cells? Luckily, this is a pretty common desire in programming. You've probably seen `document.getElementById()` before, which we can use to get back a single HTML element using its `ID`. There is another handy method called [document.getElementsByTagName()](https://www.w3schools.com/jsref/met_document_getelementsbytagname.asp) which gives us back _an array of every element of a certain type_. For example, give me all the `<p>` tags, or all the `<h1>` tags.
  
 Using this method, we can create a new array of all the `<td>` tags like so:
 
@@ -98,7 +98,7 @@ cells[7].onclick = sayHello
 cells[8].onclick = sayHello
 ```
  
-Isn't it beautiful? ...No! That was a trick question. It is not beautiful. [Don't repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+Isn't it beautiful? No! That was a trick question. It is not beautiful. [Don't repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 Whenever you find yourself doing something over and over again, what you _really_ want is a Loop. The computer does the loops - you do not do the loops.
 
 Something we know about loops is that they have an "Iterator" (`let i = 0`) which represents how many times we have been through the loop. The iterator increases each time we finish a cycle of the loop (`i++`) until it surpasses some kind of limit (`i < cells.length`) and then the loop stops.
@@ -111,7 +111,7 @@ for (let i = 0; i < cells.length; i++) {
 }
 ```
  
-Isn't it beautiful? ...Yes! That was not a trick question. But we're meant to be playing _Tic-Tac-Toe_ here, not saying hello so lets move on. Next we're going to look at keeping track of whose turn it is, and actually putting the Xs or Os into the cells.
+Isn't it beautiful? Yes! That was not a trick question. But we're meant to be playing _Tic-Tac-Toe_ here, not saying hello, so let's move on. Next we're going to look at keeping track of whose turn it is, and actually putting the X's or O's into the cells.
  
 ## Keeping track of the turns
  
@@ -150,7 +150,7 @@ The specific HTML element you clicked on is called the `target` of the click eve
  
 ## The cellClicked(e) function PART II
  
-Now we're going to practice another crucial skill when it comes to writing more complicated algorithms. [PSEUDO CODE](https://www.geeksforgeeks.org/how-to-write-a-pseudo-code/). It often takes new programmers a long time to embrace pseudocode. They often dive right into writing the function with a very blurry understanding of what they want to happen. Bashing at the keys in what you might call the "Infinite Monkeys, Infinite Typewriters" technique. It's like driving in roughly the right direction with a vague idea of where you want to end up. You'll probably get there eventually, but it will take a _lot_ longer, and realizing that you have been driving down the wrong street for 20 minutes is extremely frustrating. So... don't do that! Make a plan, even just a few bullet points, before you start driving.
+Now we're going to practise another crucial skill when it comes to writing more complicated algorithms: [PSEUDOCODE](https://www.geeksforgeeks.org/how-to-write-a-pseudo-code/). It often takes new programmers a long time to embrace pseudocode. They often dive right into writing the function with a very blurry understanding of what they want to happen. Bashing at the keys in what you might call the "Infinite Monkeys, Infinite Typewriters" technique. It's like driving in roughly the right direction with a vague idea of where you want to end up. You'll probably get there eventually, but it will take a _lot_ longer, and realising that you have been driving down the wrong street for 20 minutes is extremely frustrating. So. . . don't do that! Make a plan, even just a few bullet points, before you start driving.
  
 Here is some pseudocode for the `cellClicked(e)` function:
  
@@ -166,11 +166,11 @@ function cellClicked(e) {
  
     // put the symbol inside the cell (by using .innerHTML again)
  
-    // check to see if the player won with that move (probably using a new function, like checkForWin() which i'll need to write later)
+    // check to see if the player won with that move (probably using a new function, like checkForWin() which I'll need to write later)
  
     // switch which players turn it is (using the naughtsTurn boolean again)
  
-    // update the text at the top of the page saying whos turn it is now
+    // update the text at the top of the page saying whose turn it is now
 }
 ```
  
@@ -180,7 +180,7 @@ Writing that pseudocode doesn't take long. It might take you a little longer whe
  
 We're going to let you tackle writing the real contents of `cellClicked(e)` yourself, but here are a few tips based on the pseudocode:
  
-- Create a variable for the clicked cell so i can do stuff with it
+- Create a variable for the clicked cell so I can do stuff with it
 
     We covered this one already with the `e.target`!
  
@@ -190,25 +190,25 @@ We're going to let you tackle writing the real contents of `cellClicked(e)` your
  
 - Figure out which symbol to put inside the cell (X or O based on the naughtsTurn Boolean)
 
-    This could be a great time to practice using the [Ternary Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) if you're feeling adventurous, but an `if else` statement will work just as well. 
+    This could be a great time to practise using the [Ternary Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) if you're feeling adventurous, but an `if else` statement will work just as well. 
  
 - Put the symbol inside the cell (by using .innerHTML again)
 
     Once you've figured out which symbol (X or O) to put inside the cell (and which cell to put it into), putting it in there is straightforward using .innerHTML.
  
-- Check to see if the player won with that move (probably using a new function, like checkForWin() which i'll need to write later)
+- Check to see if the player won with that move (probably using a new function, like checkForWin() which I'll need to write later)
 
     You could create a stub `checkForWin()` function with nothing inside it for the time being, making the real function is the next step.
  
-- Switch which players turn it is (using the naughtsTurn boolean again)
+- Switch which player's turn it is (using the naughtsTurn boolean again)
 
     Refer back to the `!=` boolean pro-tip from earlier.
  
-- Update the text at the top of the page saying whos turn it is now
+- Update the text at the top of the page saying whose turn it is now
 
-    Refer back to how we updated HTML text in the Javascript Cafe challenge from sprint 3.
+    Refer back to how we updated HTML text in the JavaScript Cafe challenge from Sprint 3.
  
-Once you've worked through those bullet points, you should now be able to play Tic-Tac-Toe! However, there's no winning yet. You can just put the Xs and Os into the cells anywhere you want. Now it's time for the hardest part! You need to write an algorithm that looks through the array of cells and tries to find three in a row. Let's do it.
+Once you've worked through those bullet points, you should now be able to play Tic-Tac-Toe! However, there's no winning yet. You can just put the X's and O's into the cells anywhere you want. Now it's time for the hardest part! You need to write an algorithm that looks through the array of cells and tries to find three in a row. Let's do it.
  
 ## The checkForWin(symb) function
  
@@ -219,11 +219,11 @@ You guessed it, pseudocode! What might that look like?
 function checkForWin(symb) {
  
     // the function takes a string as an argument ("X" or "O")
-    // *in this example we called the argument 'symb', short for symbol, but you can call it whatever you want. (hint: bananas)
+    // *in this example we called the argument 'symb', short for symbol, but you can call it whatever you want (hint: bananas)
  
     // it needs to check if that symbol appears three times in a row in the board cells
    
-    // it will need to check for horizontal, vertical AND diagonal victories
+    // it will need to check for horizontal, vertical, AND diagonal victories
  
     // and a boolean to keep track of if we found a winning line of symbols (like let gameIsOver = false/true)
  
@@ -274,7 +274,7 @@ Good luck! Remember to reach out for help if you get stuck.
  
 ## Bugs?
  
-All going well, you might have a working version of Tic-Tac-Toe now! Play it! Is anything not working how you think it should? Can you keep playing even if someone won the game? Bugs are absolutely unavoidable when you're programming. You are a well oiled bug producing machine - constantly spewing catastrophic typos and algorithmic blunders into everything you do. Don't panic! The process of going through your code, manually testing what you made, finding the mistakes and fixing them is a crucial skill. Practice it!
+All going well, you might have a working version of Tic-Tac-Toe now! Play it! Is anything not working how you think it should? Can you keep playing even if someone won the game? Bugs are absolutely unavoidable when you're programming. You are a well-oiled bug producing machine - constantly spewing catastrophic typos and algorithmic blunders into everything you do. Don't panic! The process of going through your code, manually testing what you made, finding the mistakes and fixing them is a crucial skill. Practise it!
  
 ## Wrap up
  
@@ -284,10 +284,10 @@ Congratulations! You made a videogame. Check out some of these stretch feature s
  
 ## Stretch ideas
  
-* Randomize which player takes the first turn, X or O. 
-* Create a function that checks for a 'Stalemate'. For example, all the squares are full and nobody won. Display "STALEMATE" at the top of the page.
+* Randomise which player takes the first turn, X or O. 
+* Create a function that checks for a 'Stalemate' e.g. all the squares are full and nobody won, display "STALEMATE" at the top of the page.
 * A restart button, that resets the game.
-* Wacky cartoon sound effects.
+* Whacky cartoon sound effects.
 * A tally that keeps track of how many times X or O has won.
 * Any new feature that makes Tic-Tac-Toe more interesting to play. (It's a pretty boring game).
 * Turn it into an NFT for some reason! Don't worry - they're _totally_ not a predatory pyramid scheme.
