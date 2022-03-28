@@ -14,7 +14,7 @@
  
 ## Summary
  
-Today we're going to build an all time classic game, Tic-Tac-Toe! All of the coding practice you have done so far in Sprints 3 and 4 has been fairly on the rails, so in this challenge we're going to give you a blank page and more freedom to tackle the problem in your own way. This is an exercise in problem solving and algorithmic thinking. This README provides instructions for _one_ possible solution but(!) as always with programming, there are a many different ways you could build Tic-Tac-Toe. If you have some programming experience already and want to go off the beaten path to solve this challenge - go for it!
+Today we're going to build an all-time classic game, Tic-Tac-Toe! All of the coding practice you have done so far in Sprints 3 and 4 has been fairly on the rails, so in this challenge we're going to give you a blank page and more freedom to tackle the problem in your own way. This is an exercise in problem solving and algorithmic thinking. This README provides instructions for _one_ possible solution but(!) as always with programming, there are a many different ways you could build Tic-Tac-Toe. If you have some programming experience already and want to go off the beaten path to solve this challenge - go for it!
  
 ## See it in action
  
@@ -31,9 +31,11 @@ Reflect | 20 minutes
  
 1. Create a fork of the [tic-tac-toe repo.](https://github.com/dev-academy-challenges/tic-tac-toe)
  
-2. Clone your copy of the forked repository down using `git clone https://github.com/your-name/tic-tac-toe` (replacing your-name with your GitHub account name).
+2. Clone your copy of the forked repository down using `git clone https://github.com/your-name/tic-tac-toe` (replacing `your-name` with your GitHub account name).
  
-3. Navigate into the tic-tac-toe directory and open it in your code editor. You'll see a CSS file, a JavaScript file, and an HTML file. The only thing we've done is create the board using an HTML table, give it a header, and add a little bit of styling to get it looking pretty. The JavaScript is all you!
+3. Navigate into the tic-tac-toe directory and open it in your code editor (hint `code .`). You'll see a CSS file, an HTML file, and a JavaScript file. We've set up the CSS and HTML files, the JavaScript will be all you! The only thing we've done is create the board using an HTML table, given it a header, and added a little bit of styling to get it looking pretty.
+
+4. Open the HTML file in your browser for a visual aid as we break down what is needed for the game to work.  
  
 ## Let's do it!
  
