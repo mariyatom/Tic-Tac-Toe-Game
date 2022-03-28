@@ -33,9 +33,9 @@ Reflect | 20 minutes
  
 2. Clone your copy of the forked repository down using `git clone https://github.com/your-name/tic-tac-toe` (replacing `your-name` with your GitHub account name).
  
-3. Navigate into the tic-tac-toe directory and open it in your code editor (hint `code .`). You'll see a CSS file, an HTML file, and a JavaScript file. We've set up the CSS and HTML files, the JavaScript will be all you! The only thing we've done is create the board using an HTML table, given it a header, and added a little bit of styling to get it looking pretty.
+3. Navigate into the tic-tac-toe directory and open it in your code editor (hint: `code .`). You'll see a CSS file, an HTML file, and a JavaScript file. Take a look at the HTML and CSS files: the only thing we've done is create the board using an HTML table, given it a header, and added a little bit of styling to get it looking pretty. The JavaScript will be all you!
 
-4. Open the HTML file in your browser for a visual aid as we break down what is needed for the game to work.  
+4. Open the HTML file in your browser for a visual aid as we break down what is needed for the game to work. Remember to refresh the browser to review changes.  
  
 ## Let's do it!
  
