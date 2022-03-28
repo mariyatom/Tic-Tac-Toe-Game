@@ -32,3 +32,9 @@ td {
     border: black solid 3px;
     color: black;
   }
+
+h2 {
+  text-align: center;
+  font-size: 2vw;
+  color: #4c2c92;
+}  

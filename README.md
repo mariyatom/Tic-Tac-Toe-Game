@@ -46,18 +46,28 @@ Reflect | 20 minutes
  
 3. Navigate into the tic-tac-toe directory and open it in your code editor (hint: `code .`). You'll see a CSS file, an HTML file, and a JavaScript file. Take a look at the HTML and CSS files: the only thing we've done is create the board using an HTML table, given it a header, and added a little bit of styling to get it looking pretty. The JavaScript will be all you!
 
-4. Open the HTML file in your browser for a visual aid as we break down what is needed for the game to work.
- 
-## Let's do it!
- 
-Here is an overview of things that the finished Tic-Tac-Toe game will need. We'll tackle them one by one.
- 
-- An array containing all the squares on the board. We'll need this to get the X's and O's displaying on the page, and also to check which player has won.
-- The ability to click the squares (which are HTML `TD` elements) and put either an X or an O into them.
-- A boolean to keep track of whose turn it is, X or O, and logic to switch turns once a player makes a move.  
-- A way to display whose turn it is at the top of the page.
-- A function for checking to see if anyone has won. For example, the same symbol 3 times horizontally, vertically or diagonally. (This is the hard bit).
-- Logic to display "___ WON!" at the top of the page when a player wins.
+## Break it down
+
+Open the `index.html` in your browser to see the user interface. Let's use it as a visual aid to figure out what we need to build in our JavaScript file. We have:
+
+- a title, "Tic-Tac-Toe"
+
+- a 3x3 grid, and each cell should:
+    - be clickable
+    - display an "X" or an "O" once a player has clicked that grid cell for their turn
+
+- a subtitle ("Click on a cell to start!"), which when a player:
+    - clicks a grid cell to mark it, should change to inform the other player it's now their turn
+    - has won, should tell us who won the game.
+
+So let's think about how we can do this and then tackle them one by one. We need:
+
+1) an array containing all the squares on the board
+2) the ability to click each square and put either an X or an O into it
+3) a boolean to keep track of whose turn it is, X or O, and logic to switch turns once a player makes a move  
+4) logic to display whose turn it is
+5) a function that checks if the game has been won
+6) logic to display "_ WON!" when a player wins.
  
 ## An array of TD's (AKA the board & cells)
 An [HTML Table](https://www.w3schools.com/html/html_tables.asp) is a fairly common way of displaying spreadsheet style data on the web. It has `TR` children elements, which is short for 'Table Row'. Those `TR` elements in turn have `TD` children elements. TD is short for 'Table Data' and it's the part we're really interested in here. Our board for Tic-Tac-Toe is nine `TD` elements in total. As with all HTML elements, we can access and edit their properties using JavaScript.
