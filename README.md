@@ -19,6 +19,17 @@ Today we're going to build an all-time classic game, Tic-Tac-Toe! All of the cod
 ## See it in action
  
 If somehow you have made it this far in life without encountering Tic-Tac-Toe (AKA Noughts and Crosses, or X's and O's), you can check it out [here](https://playtictactoe.org/).
+
+## Before you start
+
+This challenge includes lots of things you've learnt already and had some experience with in smaller challenges but requires you to use them in _one larger piece of code_ (similar to Sprint 3 JavaScript Cafe length, but not as long). We'll go through some of it with you, other times give you hints, and a few times you'll need to figure out what to do and write some code from scratch.
+
+Keep in mind that you'll write snippets which are part of a bigger thing, but you might not be able to see them in action in your browser until a bigger piece is built. Remember to use console.log() throughout to see if things are being passed through to the browser and pay attention to any error messages that might show up in your terminal/code editor. 
+
+This is a big challenge so remember to be kind to yourself and to:
+- ask for help (if you're stuck problem solving for more than 30 minutes, jump on to the Slack Foundations channel)
+- take regular breaks. Breaks are _not_ because you can’t do something, but _to enable_ you to do something. A quick reset, e.g. taking your eyes off the screen and grabbing a glass of water, can distract your brain long enough that when you look at the problem again you see the way forward.
+- stick to the timebox! 
  
 ## Timebox
  
