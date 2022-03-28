@@ -72,7 +72,7 @@ So let's think about how we can do this and then tackle them one by one. We need
 ## An array of TD's (AKA the board & cells)
 An [HTML Table](https://www.w3schools.com/html/html_tables.asp) is a fairly common way of displaying spreadsheet style data on the web. It has `TR` children elements, which is short for 'Table Row'. Those `TR` elements in turn have `TD` children elements. TD is short for 'Table Data' and it's the part we're really interested in here. Our board for Tic-Tac-Toe is nine `TD` elements in total. As with all HTML elements, we can access and edit their properties using JavaScript.
  
-For example, if I had a variable representing a particular cell (`TD`) in an HTML table, I could edit what is inside the cell by accessing it's `.innerHTML` property like this:
+For example, if I had a variable (let's call it `myCell`) representing a particular cell (`TD`) in an HTML table, I could edit what is inside the cell by accessing it's `.innerHTML` property like this:
  
 `myCell.innerHTML = "X"` or `myCell.innerHTML = "O"`
  
