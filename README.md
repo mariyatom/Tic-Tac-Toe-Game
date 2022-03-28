@@ -79,8 +79,7 @@ For example, if I had a variable (let's call it `myCell`) representing a particu
 Which is the equivalent of `<td>X</td>` or `<td>O</td>` if we were writing it straight into the HTML file.
 `.innerHTML` literally means "what is inside the HTML tag".
  
-So with that info, we now know how to put X's or O's into any particular cell, but how do we know _which_ cell to put them into, and when it should happen?
-This is where the _array of cells_ we mentioned earlier (in our overview) comes in. If we had an array of all the `TD` elements, we could "bind a function to their onclick method" - which is a complicated way of saying: "when I click on something, something happens".
+So with that info, we know how to put X's or O's into any particular cell, but how do we know _which_ cell to put them into, and _when_ it should happen? This is where the _array of cells_ we mentioned earlier (in our overview) comes in. If we had an array of all the `TD` elements, we could "bind a function to their onclick method" - which is a complicated way of saying: "when I click on something, something happens".
  
 So how do we get the array of all the cells? Luckily, this is a pretty common desire in programming. You've probably seen `document.getElementById()` before, which we can use to get back a single HTML element using its `ID`. There is another handy method called [document.getElementsByTagName()](https://www.w3schools.com/jsref/met_document_getelementsbytagname.asp) which gives us back _an array of every element of a certain type_. For example, give me all the `<p>` tags, or all the `<h1>` tags.
  
@@ -88,7 +87,7 @@ Using this method, we can create a new array of all the `<td>` tags like so:
 
 `let cells = document.getElementsByTagName("TD")`
  
-And boom, we've got our nine cells to make up our board!
+And boom, we've got our nine cells to make up our board! Go ahead and add that snippet to your `game.js` file. 
  
 ## Binding the onclick method (AKA 'when I click on something, something happens')
  
