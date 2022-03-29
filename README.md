@@ -60,9 +60,9 @@ Open the `index.html` in your browser to see the user interface. Let's use it as
     - clicks a grid cell to mark it, should change to inform the other player it's now their turn
     - has won, should tell us who won the game.
 
-So let's think about how we can do this and then tackle them one by one. We need:
+So let's think about how we can do this and then tackle the parts one by one. We need:
 
-1) an array containing all the squares on the board
+1) an array containing all the squares of the board
 2) the ability to click each square and put either an X or an O into it
 3) a boolean to keep track of whose turn it is, X or O, and logic to switch turns once a player makes a move  
 4) logic to display whose turn it is
@@ -87,7 +87,7 @@ Using this method, we can create a new array of all the `<td>` tags like so:
 
 `let cells = document.getElementsByTagName("TD")`
  
-And boom, we've got our nine cells to make up our board! Go ahead and add that snippet to your `game.js` file. 
+And boom, we've got the nine cells that make up our board! Go ahead and add that snippet to your `game.js` file. 
  
 ## Binding the onclick method (AKA 'when I click on something, something happens')
  
@@ -119,7 +119,7 @@ cells[7].onclick = sayHello
 cells[8].onclick = sayHello
 ```
  
-Isn't it beautiful? That was a trick question, it is not beautiful. [Don't repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+Isn't it beautiful? That was a trick question! It is not beautiful. [Don't repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
 Whenever you find yourself doing something over and over again, what you _really_ want is a Loop. The computer does the loops - you do not do the loops.
 
@@ -133,7 +133,7 @@ for (let i = 0; i < cells.length; i++) {
 }
 ```
  
-Isn't it beautiful? Yes! That was not a trick question. But we're meant to be playing _Tic-Tac-Toe_ here, not saying hello, so let's move on. Next we're going to look at keeping track of whose turn it is, and actually putting the X's or O's into the cells.
+Isn't it beautiful? Yes! That was not a trick question. But we're meant to be playing _Tic-Tac-Toe_ here, not saying hello, so let's move on. 
  
 ## Set up the defaults
  
@@ -217,12 +217,11 @@ We're going to let you tackle writing the real contents of `cellClicked(e)` your
  
 - _put the symbol inside the cell (by using .innerHTML again)_
 
-    Once you've figured out which symbol ("X" or "O") to put inside the cell, putting it in there is straightforward using .innerHTML.
+    Once you've figured out which symbol to put inside the cell, putting it in there is straightforward using .innerHTML.
  
 - _check to see if the player won with that move (probably using a new function, like checkForWin() which I'll need to write later)_
 
-    You could create a stub `checkForWin()` function with nothing inside it for the time being, making the real function is the next step after writing this `cellClicked(e)` function. Hint: you will need to pass the `symbol` variable in when you call the `checkForWin()` function. 
-        
+    You could create a stub `checkForWin()` function with nothing inside it for the time being, making the real function is the next step after writing this `cellClicked(e)` function. Hint: you will need to pass the `symbol` variable in when you call the `checkForWin()` function.    
   
 - _if the game isn't over_
 
@@ -232,7 +231,7 @@ We're going to let you tackle writing the real contents of `cellClicked(e)` your
 
     Everytime someone makes a move, all we need to do is toggle that variable state to keep track of the next player's turn. 
     
-    Tip! You can toggle a boolean "on and off" with this nifty trick: `noughtsTurn = !noughtsTurn` If it's true, that line will set it false, if it's false, it will set it true!
+    Tip! You can toggle a boolean "on and off" with this nifty trick: `noughtsTurn = !noughtsTurn` If it's true, that line will set it false; if it's false, it will set it true!
 
 - _update the subtitle saying whose turn it is now_
 
@@ -275,6 +274,7 @@ We're going to show you what that could look like for a horizontal victory, and 
 function checkForWin(symbol) {
  
     // HORIZONTAL LINES //
+
     if (cells[0].innerHTML == symbol && cells[1].innerHTML == symbol && cells[2].innerHTML == symbol)
         gameIsOver = true
  
@@ -291,6 +291,7 @@ function checkForWin(symbol) {
     // DIAGONAL LINES //
  
     // ...
+ 
  
     if (gameIsOver) {
         // update the subtitle with the winner
