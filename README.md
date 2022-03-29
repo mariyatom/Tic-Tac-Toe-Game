@@ -94,7 +94,6 @@ And boom, we've got our nine cells to make up our board! Go ahead and add that s
 Every HTML element has a secret `.onclick` method. They all start empty, but you can tell them to do anything you want. For example, put the following code into your `game.js` file:
  
 ```game.js
-let cells = document.getElementsByTagName("TD")
  
 function sayHello () {
     console.log("hello")
@@ -103,10 +102,10 @@ function sayHello () {
 cells[0].onclick = sayHello
 ```
  
-Open up the `index.html` file in your browser and click on the top left square of the board.
+Refresh the `index.html` file in your browser and click on the top left square of the board.
 If you open your browser developer tools, in the Console tab you should see the "hello" message printing.
  
-"Woohoo!". Now, if you really wanted to, you could put this into your `game.js` file:
+Woohoo! Now, if you really wanted to, you could put this into your `game.js` file:
  
 ```game.js
 cells[0].onclick = sayHello
@@ -120,7 +119,8 @@ cells[7].onclick = sayHello
 cells[8].onclick = sayHello
 ```
  
-Isn't it beautiful? No! That was a trick question. It is not beautiful. [Don't repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+Isn't it beautiful? That was a trick question, it is not beautiful. [Don't repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+
 Whenever you find yourself doing something over and over again, what you _really_ want is a Loop. The computer does the loops - you do not do the loops.
 
 Something we know about loops is that they have an "Iterator" (`let i = 0`) which represents how many times we have been through the loop. The iterator increases each time we finish a cycle of the loop (`i++`) until it surpasses some kind of limit (`i < cells.length`) and then the loop stops.
@@ -135,19 +135,18 @@ for (let i = 0; i < cells.length; i++) {
  
 Isn't it beautiful? Yes! That was not a trick question. But we're meant to be playing _Tic-Tac-Toe_ here, not saying hello, so let's move on. Next we're going to look at keeping track of whose turn it is, and actually putting the X's or O's into the cells.
  
-## Keeping track of the turns
+## Set up the defaults
  
-This step isn't going to be too tricky. It's either going to be O's turn, or not O's turn. True or false! Sounds like a boolean. It might look like this:
- 
-`let noughtsTurn = true`  
- 
-Now every time someone makes a move, all we need to do is toggle that variable state to keep track of the next player's turn. 
+This step is fairly straightforward, we're going to set some defaults for the game. 
 
-Pro-tip: You can toggle a boolean "on and off" with this nifty trick:
-`noughtsTurn = !noughtsTurn`
- 
-If it's true, the above line will set it to false, if it's false, it will set it true!
-But when is that going to happen? It needs to happen every time a player clicks on a cell, but _only_ if it's a valid move. For example, an empty cell that doesn't already have an X or an O in it. Let's dive into that now.
+``` 
+let noughtsTurn = true
+
+let gameIsOver
+```
+
+The default starting player will be noughts, and the game should only be over when it has met the winning conditions. We'll refer to these in later code, but they need to be declared at this point.  
+
  
 ## The cellClicked(e) function PART I
  
@@ -164,15 +163,15 @@ function cellClicked(e) {
  
 Then, back inside your loop from earlier, you could replace `onclick = sayHello` with `onclick = cellClicked`. This is another reason why [DRY code](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) is best. Instead of having to remember and find every time you bound the onclick method, changing that single line in the loop changes it for every cell on the board.
  
-Now you might be wondering, what is going on with that `(e)` argument, and what is `e.target`? The `e` stands for event. It is a secret argument that JavaScript _automatically_ slips into every function executed by an `.onclick` method. It's a little bit sneaky, because it happens magically behind the scenes. You can read more about [DOM events here](https://www.w3schools.com/jsref/dom_obj_event.asp). But the [TL;DR](https://www.merriam-webster.com/dictionary/TL%3BDR#:~:text=1%20%3A%20too%20long%3B%20didn',even%20sit%20down%20and%20read) of the situation is that they are **huge** objects that contain heaps of information about everything that happened the moment you clicked on that HTML element - including, most importantly for us, _which_ HTML element you clicked on. This is important for what we're trying to do, because we need to know _which_ cell to put an X or an O inside.
+Now you might be wondering, what is going on with that `(e)` argument, and what is `e.target`? The `e` stands for event. It is a secret argument that JavaScript _automatically_ slips into every function executed by an `.onclick` method. It's a little bit sneaky because it happens magically behind the scenes. You can read more about [DOM events here](https://www.w3schools.com/jsref/dom_obj_event.asp) but the [TL;DR](https://www.merriam-webster.com/dictionary/TL%3BDR#:~:text=1%20%3A%20too%20long%3B%20didn',even%20sit%20down%20and%20read) is they are **huge** objects containing heaps of information about everything that happened the moment you clicked on that HTML element including, most importantly for us, _which_ HTML element you clicked on. This is important for what we're trying to do because we need to know _which_ cell to put an X or an O inside.
  
-The specific HTML element you clicked on is called the `target` of the click event, so by saying `let cell = e.target`, we can create a new variable representing the cell we clicked on. If you open `index.html` in your browser now and look in the developer tools Console, you should be able to click on cells and see that `"i clicked on: " + cell` message popping up.
+The specific HTML element you clicked on is called the `target` of the click event, so by saying `let cell = e.target`, we can create a new variable representing the cell we clicked on. Add the above `cellClicked(e)` code to your `game.js`, then refresh your browser and look in the developer tools Console, you should be able to click on cells and see that `"i clicked on: " + cell` message popping up.
 
-*Note, as with _all_ argument and variable names, there is nothing "magic" about the letter `e`. You could write `cellClicked(bananas)` and create the `let annie = bananas.target` variable and it would work in exactly the same way. The names we give to arugments and variables are for _us_, the programmers. The computer only cares about _what data_ is assigned to the arguments and variables that _we_ name.   
+*Note, as with _all_ argument and variable names, there is nothing "magic" about the letter `e`. You could write `cellClicked(bananas)` and create the `let annie = bananas.target` variable and it would work in exactly the same way. The names we give to arugments and variables are for _us_, the programmers. The computer only cares about what _data_ is assigned to the arguments and variables that _we_ name.   
  
 ## The cellClicked(e) function PART II
  
-Now we're going to practise another crucial skill when it comes to writing more complicated algorithms: [PSEUDOCODE](https://www.geeksforgeeks.org/how-to-write-a-pseudo-code/). It often takes new programmers a long time to embrace pseudocode. They often dive right into writing the function with a very blurry understanding of what they want to happen. Bashing at the keys in what you might call the "Infinite Monkeys, Infinite Typewriters" technique. It's like driving in roughly the right direction with a vague idea of where you want to end up. You'll probably get there eventually, but it will take a _lot_ longer, and realising that you have been driving down the wrong street for 20 minutes is extremely frustrating. So. . . don't do that! Make a plan, even just a few bullet points, before you start driving.
+Now we're going to practise another crucial skill when it comes to writing more complicated algorithms: [PSEUDOCODE](https://www.geeksforgeeks.org/how-to-write-a-pseudo-code/). Often it takes new programmers a long time to embrace pseudocode. They can dive right into writing the function with a very blurry understanding of what they want to happen. It's like driving in roughly the right direction with a vague idea of where you want to end up. You'll probably get there eventually, but it will take a _lot_ longer, and realising that you have been driving down the wrong street for 20 minutes is extremely frustrating. So. . . don't do that! Make a plan, even just a few bullet points, before you start driving.
  
 Here is some pseudocode for the `cellClicked(e)` function:
  
@@ -180,19 +179,21 @@ Here is some pseudocode for the `cellClicked(e)` function:
 // function for handling clicks on cells
 function cellClicked(e) {
  
-    // create a variable for the clicked cell so i can do stuff with it
+  // create a variable for the clicked cell so I can do stuff with it
  
-    // only put something in the cell if it's empty (by checking it's .innerHTML property)
+  // if the cell is empty (check it's .innerHTML property)
  
-    // figure out which symbol to put inside the cell (X or O based on the naughtsTurn Boolean)
+      // figure out which symbol to put inside the cell ("O" or "X" based on the naughtsTurn boolean)
  
-    // put the symbol inside the cell (by using .innerHTML again)
+      // put the symbol inside the cell (by using .innerHTML again)
  
-    // check to see if the player won with that move (probably using a new function, like checkForWin() which I'll need to write later)
+      // check to see if the player won with that move (probably using a new function, like checkForWin() which I'll need to write later)
  
-    // switch which players turn it is (using the naughtsTurn boolean again)
+          // if the game isn't over 
+        
+              // switch to the other player (using the naughtsTurn boolean again)
  
-    // update the text at the top of the page saying whose turn it is now
+              // update the subtitle saying whose turn it is now
 }
 ```
  
@@ -202,56 +203,63 @@ Writing that pseudocode doesn't take long. It might take you a little longer whe
  
 We're going to let you tackle writing the real contents of `cellClicked(e)` yourself, but here are a few tips based on the pseudocode:
  
-- Create a variable for the clicked cell so I can do stuff with it
+- _create a variable for the clicked cell so I can do stuff with it_
 
     We covered this one already with the `e.target`!
  
-- Only put something in the cell if it's empty (by checking it's .innerHTML property)
+- _if the cell is empty (check it's .innerHTML property)_
 
     You can check to see if an HTML element is empty like `myVariableName.innerHTML == ""`
  
-- Figure out which symbol to put inside the cell (X or O based on the naughtsTurn Boolean)
+- _figure out which symbol to put inside the cell ("O" or "X" based on the naughtsTurn Boolean)_
 
-    This could be a great time to practise using the [Ternary Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) if you're feeling adventurous, but an `if else` statement will work just as well. 
+    Creating a variable for the symbol is useful here (maybe `symbol`), and it could be a great time to practise using the [Ternary Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) if you're feeling adventurous, but an `if else` statement will work just as well.  
  
-- Put the symbol inside the cell (by using .innerHTML again)
+- _put the symbol inside the cell (by using .innerHTML again)_
 
-    Once you've figured out which symbol (X or O) to put inside the cell (and which cell to put it into), putting it in there is straightforward using .innerHTML.
+    Once you've figured out which symbol ("X" or "O") to put inside the cell, putting it in there is straightforward using .innerHTML.
  
-- Check to see if the player won with that move (probably using a new function, like checkForWin() which I'll need to write later)
+- _check to see if the player won with that move (probably using a new function, like checkForWin() which I'll need to write later)_
 
-    You could create a stub `checkForWin()` function with nothing inside it for the time being, making the real function is the next step.
- 
-- Switch which player's turn it is (using the naughtsTurn boolean again)
+    You could create a stub `checkForWin()` function with nothing inside it for the time being, making the real function is the next step after writing this `cellClicked(e)` function. Hint: you will need to pass the `symbol` variable in when you call the `checkForWin()` function. 
+        
+  
+- _if the game isn't over_
 
-    Refer back to the `!=` boolean pro-tip from earlier.
- 
-- Update the text at the top of the page saying whose turn it is now
+    You could use the logical NOT operator here to toggle the gameIsOver variable (e.g. !gameIsOver).
+
+- _switch to the other player (using the naughtsTurn boolean again)_
+
+    Everytime someone makes a move, all we need to do is toggle that variable state to keep track of the next player's turn. 
+    
+    Tip! You can toggle a boolean "on and off" with this nifty trick: `noughtsTurn = !noughtsTurn` If it's true, that line will set it false, if it's false, it will set it true!
+
+- _update the subtitle saying whose turn it is now_
 
     Refer back to how we updated HTML text in the JavaScript Cafe challenge from Sprint 3.
  
-Once you've worked through those bullet points, you should now be able to play Tic-Tac-Toe! However, there's no winning yet. You can just put the X's and O's into the cells anywhere you want. Now it's time for the hardest part! You need to write an algorithm that looks through the array of cells and tries to find three in a row. Let's do it.
+Once you've worked through those bullet points, you should now be able to play basic Tic-Tac-Toe! However, there's no winning yet. You can just put the X's and O's into the cells anywhere you want. You need to write an algorithm that looks through the array of cells and tries to find three in a row. Let's do it!
  
-## The checkForWin(symb) function
+## The checkForWin(symbol) function
  
-So what's the first step when it comes to writing this new function?
-You guessed it, pseudocode! What might that look like?
+So what's the first step when it comes to writing this new function? You guessed it, pseudocode! What might that look like?
  
 ```game.js
-function checkForWin(symb) {
+
+// the function takes a string as an argument ("X" or "O")
+// *in this example we called the argument 'symbol' but you can call it whatever you want (hint: bananas)
+
+function checkForWin(symbol) {
  
-    // the function takes a string as an argument ("X" or "O")
-    // *in this example we called the argument 'symb', short for symbol, but you can call it whatever you want (hint: bananas)
- 
-    // it needs to check if that symbol appears three times in a row in the board cells
+    // if a symbol appears three times in a row in the board cells i.e. a winning line
    
-    // it will need to check for horizontal, vertical, AND diagonal victories
+        // either horizontally, vertically, OR diagonally
  
-    // and a boolean to keep track of if we found a winning line of symbols (like let gameIsOver = false/true)
+        // the game is over
  
-    // if we found three of the same symbol in a row, the game is over
+    // if the game is over
  
-    // update the header text with the winner
+        // update the subtitle with the winner
    
 }
 ```
@@ -264,18 +272,16 @@ So, armed with this knowledge, we can construct `if()` statements that check to 
 We're going to show you what that could look like for a horizontal victory, and let you tackle the vertical and diagonal victories yourself:
  
 ```game.js
-function checkForWin(symb) {
- 
-    let gameIsOver = false
+function checkForWin(symbol) {
  
     // HORIZONTAL LINES //
-    if (cells[0].innerHTML == symb && cells[1].innerHTML == symb && cells[2].innerHTML == symb)
+    if (cells[0].innerHTML == symbol && cells[1].innerHTML == symbol && cells[2].innerHTML == symbol)
         gameIsOver = true
  
-    else if (cells[3].innerHTML == symb && cells[4].innerHTML == symb && cells[5].innerHTML == symb)
+    else if (cells[3].innerHTML == symbol && cells[4].innerHTML == symbol && cells[5].innerHTML == symbol)
         gameIsOver = true
  
-    else if (cells[6].innerHTML == symb && cells[7].innerHTML == symb && cells[8].innerHTML == symb)
+    else if (cells[6].innerHTML == symbol && cells[7].innerHTML == symbol && cells[8].innerHTML == symbol)
         gameIsOver = true
  
     // VERTICAL LINES //
@@ -287,7 +293,7 @@ function checkForWin(symb) {
     // ...
  
     if (gameIsOver) {
-        // update the header text
+        // update the subtitle with the winner
     }
 }
 ```
@@ -307,11 +313,11 @@ Congratulations! You made a videogame. Check out some of these stretch feature s
 ## Stretch ideas
  
 * Randomise which player takes the first turn, X or O. 
-* Create a function that checks for a 'Stalemate' e.g. all the squares are full and nobody won, display "STALEMATE" at the top of the page.
-* A restart button, that resets the game.
+* Create a function that checks for a 'Stalemate' e.g. all the squares are full and nobody won, make the subtitle display "STALEMATE".
+* A restart button that resets the game.
 * Whacky cartoon sound effects.
 * A tally that keeps track of how many times X or O has won.
-* Any new feature that makes Tic-Tac-Toe more interesting to play. (It's a pretty boring game).
+* Any new feature that makes Tic-Tac-Toe more interesting to play (it's a pretty basic game).
 * Turn it into an NFT for some reason! Don't worry - they're _totally_ not a predatory pyramid scheme.
  
 ## Resources
