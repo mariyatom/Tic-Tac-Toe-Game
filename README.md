@@ -14,11 +14,11 @@
  
 ## Summary
  
-Today we're going to build an all-time classic game, Tic-Tac-Toe! All of the coding practice you have done so far in Sprints 3 and 4 has been fairly on the rails, so in this challenge we're going to give you a blank page and more freedom to tackle the problem in your own way. This is an exercise in problem solving and algorithmic thinking. This README provides instructions for _one_ possible solution but(!) as always with programming, there are a many different ways you could build Tic-Tac-Toe. If you have some programming experience already and want to go off the beaten path to solve this challenge - go for it!
+Today we're going to build an all-time classic game, Tic-Tac-Toe! All of the coding practice in Sprints 3 and 4 has been closely guided, so in this challenge we're going to give you a blank page and more freedom to approach the problem in your own way. This is an exercise in problem solving and algorithmic thinking. This README provides instructions for _one_ possible solution but(!) as always with programming, there are a many different ways you could build Tic-Tac-Toe. If you have some programming experience already and want to come up with your own solution - go for it!
  
 ## See it in action
  
-If somehow you have made it this far in life without encountering Tic-Tac-Toe (AKA Noughts and Crosses, or X's and O's), you can check it out [here](https://playtictactoe.org/).
+If you've never encountered Tic-Tac-Toe (AKA Noughts and Crosses, or X's and O's), you can check it out [here](https://playtictactoe.org/).
 
 ## Before you start
 
@@ -39,15 +39,22 @@ Tic-Tac-Toe | 10-15 hours
 Reflect | 20 minutes
  
 ## Set up
+
+<details>
+<summary><b>Expand set-up details</b></summary>
+
+    1. Create a fork of the [tic-tac-toe repo.](https://github.com/dev-academy-challenges/tic-tac-toe)
  
-1. Create a fork of the [tic-tac-toe repo.](https://github.com/dev-academy-challenges/tic-tac-toe)
+    2. Clone your copy of the forked repository down using `git clone https://github.com/your-name/tic-tac-toe` (replacing `your-name` with your GitHub account name).
  
-2. Clone your copy of the forked repository down using `git clone https://github.com/your-name/tic-tac-toe` (replacing `your-name` with your GitHub account name).
- 
-3. Navigate into the tic-tac-toe directory and open it in your code editor (hint: `code .`). You'll see a CSS file, an HTML file, and a JavaScript file. Take a look at the HTML and CSS files: the only thing we've done is create the board using an HTML table, given it a header, and added a little bit of styling to get it looking pretty. The JavaScript will be all you!
+    3. Navigate into the tic-tac-toe directory and open it in your code editor (hint: `code .`). You'll see a CSS file, an HTML file, and a JavaScript file. Take a look at the HTML and CSS files: the only thing we've done is create the board using an HTML table, given it a header, and added a little bit of styling to get it looking pretty. The JavaScript will come from you!
+
+</details>
 
 ## Break it down
 
+<details>
+<summary><b>Expand break-down details</b></summary>
 Open the `index.html` in your browser to see the user interface. Let's use it as a visual aid to figure out what we need to build in our JavaScript file. We have:
 
 - a title, "Tic-Tac-Toe"
@@ -68,8 +75,13 @@ So let's think about how we can do this and then tackle the parts one by one. We
 4) logic to display whose turn it is
 5) a function that checks if the game has been won
 6) logic to display "_ WON!" when a player wins.
+    
+</details>
  
 ## An array of TD's (AKA the board & cells)
+
+<details>
+<summary><b>Expand cell array details</b></summary>
 An [HTML Table](https://www.w3schools.com/html/html_tables.asp) is a fairly common way of displaying spreadsheet style data on the web. It has `TR` children elements, which is short for 'Table Row'. Those `TR` elements in turn have `TD` children elements. TD is short for 'Table Data' and it's the part we're really interested in here. Our board for Tic-Tac-Toe is nine `TD` elements in total. As with all HTML elements, we can access and edit their properties using JavaScript.
  
 For example, if I had a variable (let's call it `myCell`) representing a particular cell (`TD`) in an HTML table, I could edit what is inside the cell by accessing it's `.innerHTML` property like this:
@@ -87,11 +99,14 @@ Using this method, we can create a new array of all the `<td>` tags like so:
 
 `let cells = document.getElementsByTagName("TD")`
  
-And boom, we've got the nine cells that make up our board! Go ahead and add that snippet to your `game.js` file. 
- 
+And just like that, we've got the nine cells that make up our board! Go ahead and add that snippet to your `game.js` file. 
+    </details>
+    
 ## Binding the onclick method (AKA 'when I click on something, something happens')
  
-Every HTML element has a secret `.onclick` method. They all start empty, but you can tell them to do anything you want. For example, put the following code into your `game.js` file:
+<details>
+<summary><b>Expand onclick binding details</b></summary>
+Every HTML element has a built-in `.onclick` method. At first they do nothing, but you can tell them to do anything you want. For example, put the following code into your `game.js` file:
  
 ```game.js
  
@@ -119,9 +134,9 @@ cells[7].onclick = sayHello
 cells[8].onclick = sayHello
 ```
  
-Isn't it beautiful? That was a trick question! It is not beautiful. [Don't repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+This does the trick, but is not very efficient. [Don't repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
-Whenever you find yourself doing something over and over again, what you _really_ want is a Loop. The computer does the loops - you do not do the loops.
+Whenever you find yourself doing something over and over again, what you almost always want is a Loop. The computer can then loop over the repetitive task, saving the programmer (you), from needing to do it.
 
 Something we know about loops is that they have an "Iterator" (`let i = 0`) which represents how many times we have been through the loop. The iterator increases each time we finish a cycle of the loop (`i++`) until it surpasses some kind of limit (`i < cells.length`) and then the loop stops.
  
@@ -133,11 +148,15 @@ for (let i = 0; i < cells.length; i++) {
 }
 ```
  
-Isn't it beautiful? Yes! That was not a trick question. But we're meant to be playing _Tic-Tac-Toe_ here, not saying hello, so let's move on. 
- 
+That's much better! But we want to do more than say hello, so let's continue.
+    </details>
+    
 ## Set up the defaults
- 
-This step is fairly straightforward, we're going to set some defaults for the game. 
+
+<details>
+<summary><b>Expand detaults details</b></summary>
+
+This step is fairly straightforward, we're going to set up some defaults for the beginning of the game.
 
 ``` 
 let noughtsTurn = true
@@ -147,10 +166,14 @@ let gameIsOver
 
 The default starting player will be noughts, and the game should only be over when it has met the winning conditions. We'll refer to these in later code, but they need to be declared at this point.  
 
+    </details>
  
 ## The cellClicked(e) function PART I
- 
-Now we're going to write the _real_ function that will execute when you click on a cell. No more of this `sayHello` business. In programming there is a concept called a ["stub"](https://en.wikipedia.org/wiki/Method_stub). As with so many things in the coding world, "stub" can mean a few different (but similar) things. In this context, "stub" refers to a function that will _eventually_ do what you want it to do, but in the meantime it acts as a placeholder of sorts. It might look like:
+
+    <details>
+<summary><b>Expand cellClicked details (Part I)</b></summary>
+        
+Now we're going to write the _real_ function that will execute when you click on a cell, rather than saying hello. In programming there is a concept called a ["stub"](https://en.wikipedia.org/wiki/Method_stub). As with so many things in the coding world, "stub" can mean a few different (but similar) things. In this context, "stub" refers to a function that will _eventually_ do what you want it to do, but in the meantime it acts as a placeholder of sorts. It might look like:
  
 ```game.js
 function cellClicked(e) {
@@ -161,7 +184,7 @@ function cellClicked(e) {
 }
 ```
  
-Then, back inside your loop from earlier, you could replace `onclick = sayHello` with `onclick = cellClicked`. This is another reason why [DRY code](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) is best. Instead of having to remember and find every time you bound the onclick method, changing that single line in the loop changes it for every cell on the board.
+Then, back inside your loop from earlier, you could replace `onclick = sayHello` with `onclick = cellClicked`. This is another reason why [DRY code](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) is best. Instead of having to remember and find all the nine times you bound the onclick method, changing that single line in the loop changes it for every cell on the board.
  
 Now you might be wondering, what is going on with that `(e)` argument, and what is `e.target`? The `e` stands for event. It is a secret argument that JavaScript _automatically_ slips into every function executed by an `.onclick` method. It's a little bit sneaky because it happens magically behind the scenes. You can read more about [DOM events here](https://www.w3schools.com/jsref/dom_obj_event.asp) but the [TL;DR](https://www.merriam-webster.com/dictionary/TL%3BDR#:~:text=1%20%3A%20too%20long%3B%20didn',even%20sit%20down%20and%20read) is they are **huge** objects containing heaps of information about everything that happened the moment you clicked on that HTML element including, most importantly for us, _which_ HTML element you clicked on. This is important for what we're trying to do because we need to know _which_ cell to put an X or an O inside.
  
@@ -169,8 +192,13 @@ The specific HTML element you clicked on is called the `target` of the click eve
 
 *Note, as with _all_ argument and variable names, there is nothing "magic" about the letter `e`. You could write `cellClicked(bananas)` and create the `let annie = bananas.target` variable and it would work in exactly the same way. The names we give to arugments and variables are for _us_, the programmers. The computer only cares about what _data_ is assigned to the arguments and variables that _we_ name.   
  
+</details>
+    
 ## The cellClicked(e) function PART II
  
+<details>
+<summary><b>Expand cellClicked details (Part II)</b></summary>
+    
 Now we're going to practise another crucial skill when it comes to writing more complicated algorithms: [PSEUDOCODE](https://www.geeksforgeeks.org/how-to-write-a-pseudo-code/). Often it takes new programmers a long time to embrace pseudocode. They can dive right into writing the function with a very blurry understanding of what they want to happen. It's like driving in roughly the right direction with a vague idea of where you want to end up. You'll probably get there eventually, but it will take a _lot_ longer, and realising that you have been driving down the wrong street for 20 minutes is extremely frustrating. So. . . don't do that! Make a plan, even just a few bullet points, before you start driving.
  
 Here is some pseudocode for the `cellClicked(e)` function:
@@ -198,9 +226,11 @@ function cellClicked(e) {
 ```
  
 Writing that pseudocode doesn't take long. It might take you a little longer when you're new to programming, but don't sweat it. Taking time to plan your journey before you start writing code saves you an _immense_ amount of time and frustration in the long run. **So remember to do it!**
- 
+    </details>
+
 ## Turning the pseudocode into CODE
- 
+<details>
+<summary><b>Expand pseudocode-to-code details</b></summary> 
 We're going to let you tackle writing the real contents of `cellClicked(e)` yourself, but here are a few tips based on the pseudocode:
  
 - _create a variable for the clicked cell so I can do stuff with it_
@@ -217,7 +247,7 @@ We're going to let you tackle writing the real contents of `cellClicked(e)` your
  
 - _put the symbol inside the cell (by using .innerHTML again)_
 
-    Once you've figured out which symbol to put inside the cell, putting it in there is straightforward using .innerHTML.
+    Once you've figured out which symbol to put inside the cell, put it in there using .innerHTML.
  
 - _check to see if the player won with that move (probably using a new function, like checkForWin() which I'll need to write later)_
 
@@ -238,9 +268,10 @@ We're going to let you tackle writing the real contents of `cellClicked(e)` your
     Refer back to how we updated HTML text in the JavaScript Cafe challenge from Sprint 3.
  
 Once you've worked through those bullet points, you should now be able to play basic Tic-Tac-Toe! However, there's no winning yet. You can just put the X's and O's into the cells anywhere you want. You need to write an algorithm that looks through the array of cells and tries to find three in a row. Let's do it!
- 
+    </details>
 ## The checkForWin(symbol) function
- 
+ <details>
+<summary><b>Expand checkForWin details</b></summary>
 So what's the first step when it comes to writing this new function? You guessed it, pseudocode! What might that look like?
  
 ```game.js
@@ -300,10 +331,10 @@ function checkForWin(symbol) {
 ```
  
 Good luck! Remember to reach out for help if you get stuck.
- 
+    </details>
 ## Bugs?
  
-All going well, you might have a working version of Tic-Tac-Toe now! Play it! Is anything not working how you think it should? Can you keep playing even if someone won the game? Bugs are absolutely unavoidable when you're programming. You are a well-oiled bug producing machine - constantly spewing catastrophic typos and algorithmic blunders into everything you do. Don't panic! The process of going through your code, manually testing what you made, finding the mistakes and fixing them is a crucial skill. Practise it!
+All going well, you might have a working version of Tic-Tac-Toe now! Play it! Is anything not working how you think it should? Can you keep playing even if someone won the game? Bugs are absolutely unavoidable when you're programming. Don't panic! The process of going through your code, manually testing what you made, finding the mistakes and fixing them is a crucial skill. Practise it!
  
 ## Wrap up
  
@@ -312,15 +343,19 @@ Read your code again from top to bottom and make sure you understand everything 
 Congratulations! You made a videogame. Check out some of these stretch feature suggestions if you would like to keep working on this project, or please move onto the next exercise when you're ready.
  
 ## Stretch ideas
- 
+
+<details>
+<summary><b>Expand stretch ideas</b></summary>
+    
 * Randomise which player takes the first turn, X or O. 
 * Create a function that checks for a 'Stalemate' e.g. all the squares are full and nobody won, make the subtitle display "STALEMATE".
 * A restart button that resets the game.
 * Whacky cartoon sound effects.
 * A tally that keeps track of how many times X or O has won.
 * Any new feature that makes Tic-Tac-Toe more interesting to play (it's a pretty basic game).
-* Turn it into an NFT for some reason! Don't worry - they're _totally_ not a predatory pyramid scheme.
  
+</details>
+        
 ## Resources
  
 * [Play Tic-Tac-Toe](https://playtictactoe.org/)
