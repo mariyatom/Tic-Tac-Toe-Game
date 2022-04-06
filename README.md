@@ -304,7 +304,9 @@ Read your code again from top to bottom and make sure you understand everything 
  
 Remember to add, commit your code and push!
 
-Congratulations! You made a videogame. Check out some of these stretch feature suggestions if you would like to keep working on this project, or please move onto the next exercise when you're ready.
+Congratulations! You made a videogame. Navigate to your `my-reflections-sprint-5` file and answer the questions under the Tic-Tac-Toe heading.
+    
+Check out some of these stretch feature suggestions if you would like to keep working on this project, or please move onto the next exercise when you're ready.
  
 ## Stretch ideas
 
