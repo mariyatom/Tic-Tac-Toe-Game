@@ -1,4 +1,5 @@
 # Tic-Tac-Toe
+
 ## Learning Competencies
 - Further your understanding of how and when to use:
     - Variables
@@ -11,45 +12,6 @@
 - Debug code you have written
 - Practise working with more complex algorithms
 - Know when to ask for help, and don't stay stuck for too long.
- 
-## Summary
- 
-Today we're going to build an all-time classic game, Tic-Tac-Toe! All of the coding practice in Sprints 3 and 4 has been closely guided, so in this challenge we're going to give you a blank page and more freedom to approach the problem in your own way. This is an exercise in problem solving and algorithmic thinking. This README provides instructions for _one_ possible solution but(!) as always with programming, there are a many different ways you could build Tic-Tac-Toe. If you have some programming experience already and want to come up with your own solution - go for it!
- 
-## See it in action
- 
-If you've never encountered Tic-Tac-Toe (AKA Noughts and Crosses, or X's and O's), you can check it out [here](https://playtictactoe.org/).
-
-## Before you start
-
-This challenge includes lots of things you've learnt already and had some experience with in smaller challenges but requires you to use them in _one larger piece of code_ (similar to Sprint 3 JavaScript Cafe length, but not as long). We'll go through some of it with you, other times give you hints, and a few times you'll need to figure out what to do and write some code from scratch.
-
-Keep in mind that you'll write snippets which are part of a bigger thing, but you might not be able to see them in action in your browser until a bigger piece is built. Remember to use console.log() throughout to see if things are being passed through to the browser and pay attention to any error messages that might show up in your terminal/code editor. 
-
-This is a big challenge so remember to be kind to yourself and to:
-- ask for help (if you're stuck problem solving for more than 30 minutes, jump on to the Slack Foundations channel)
-- take regular breaks. Breaks are _not_ because you can’t do something, but _to enable_ you to do something. A quick reset, e.g. taking your eyes off the screen and grabbing a glass of water, can distract your brain long enough that when you look at the problem again you see the way forward.
-- stick to the timebox! 
- 
-## Timebox
- 
-Challenge | Time|
-------------|----------|
-Tic-Tac-Toe | 10-15 hours
-Reflect | 20 minutes
- 
-## Set up
-
-<details>
-<summary><b>Expand set-up details</b></summary>
-
-    1. Create a fork of the [tic-tac-toe repo.](https://github.com/dev-academy-challenges/tic-tac-toe)
- 
-    2. Clone your copy of the forked repository down using `git clone https://github.com/your-name/tic-tac-toe` (replacing `your-name` with your GitHub account name).
- 
-    3. Navigate into the tic-tac-toe directory and open it in your code editor (hint: `code .`). You'll see a CSS file, an HTML file, and a JavaScript file. Take a look at the HTML and CSS files: the only thing we've done is create the board using an HTML table, given it a header, and added a little bit of styling to get it looking pretty. The JavaScript will come from you!
-
-</details>
 
 ## Break it down
 
@@ -330,7 +292,7 @@ function checkForWin(symbol) {
 }
 ```
  
-Good luck! Remember to reach out for help if you get stuck.
+Enjoy! Remember to reach out for help if you get stuck.
     </details>
 ## Bugs?
  
@@ -340,6 +302,8 @@ All going well, you might have a working version of Tic-Tac-Toe now! Play it! Is
  
 Read your code again from top to bottom and make sure you understand everything that is happening. If it's still feeling mysterious to you, consider _deleting it all_ and doing it again from scratch. Repetition is key when it comes to learning new and complicated things. Take some time to reflect on what you did in this challenge and what you have learned.
  
+Remember to add, commit your code and push!
+
 Congratulations! You made a videogame. Check out some of these stretch feature suggestions if you would like to keep working on this project, or please move onto the next exercise when you're ready.
  
 ## Stretch ideas
