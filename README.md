@@ -231,7 +231,9 @@ We're going to let you tackle writing the real contents of `cellClicked(e)` your
  
 Once you've worked through those bullet points, you should now be able to play basic Tic-Tac-Toe! However, there's no winning yet. You can just put the X's and O's into the cells anywhere you want. You need to write an algorithm that looks through the array of cells and tries to find three in a row. Let's do it!
 </details>
+    
 ## The checkForWin(symbol) function
+
 <details>
 <summary><b>Expand checkForWin details</b></summary>
 So what's the first step when it comes to writing this new function? You guessed it, pseudocode! What might that look like?
@@ -294,8 +296,9 @@ function checkForWin(symbol) {
  
 Enjoy! Remember to reach out for help if you get stuck.
 </details>
+
 ## Bugs?
- 
+
 All going well, you might have a working version of Tic-Tac-Toe now! Play it! Is anything not working how you think it should? Can you keep playing even if someone won the game? Bugs are absolutely unavoidable when you're programming. Don't panic! The process of going through your code, manually testing what you made, finding the mistakes and fixing them is a crucial skill. Practise it!
  
 ## Wrap up
