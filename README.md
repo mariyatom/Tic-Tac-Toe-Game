@@ -116,7 +116,7 @@ That's much better! But we want to do more than say hello, so let's continue.
 ## Set up the defaults
 
 <details>
-<summary><b>Expand detaults details</b></summary>
+<summary><b>Expand defaults details</b></summary>
 
 This step is fairly straightforward, we're going to set up some defaults for the beginning of the game.
 
