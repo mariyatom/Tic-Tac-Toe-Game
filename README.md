@@ -62,7 +62,7 @@ Using this method, we can create a new array of all the `<td>` tags like so:
 `let cells = document.getElementsByTagName("TD")`
  
 And just like that, we've got the nine cells that make up our board! Go ahead and add that snippet to your `game.js` file. 
-    </details>
+</details>
     
 ## Binding the onclick method (AKA 'when I click on something, something happens')
  
@@ -111,7 +111,7 @@ for (let i = 0; i < cells.length; i++) {
 ```
  
 That's much better! But we want to do more than say hello, so let's continue.
-    </details>
+</details>
     
 ## Set up the defaults
 
@@ -128,11 +128,11 @@ let gameIsOver
 
 The default starting player will be noughts, and the game should only be over when it has met the winning conditions. We'll refer to these in later code, but they need to be declared at this point.  
 
-    </details>
+</details>
  
 ## The cellClicked(e) function PART I
 
-    <details>
+<details>
 <summary><b>Expand cellClicked details (Part I)</b></summary>
         
 Now we're going to write the _real_ function that will execute when you click on a cell, rather than saying hello. In programming there is a concept called a ["stub"](https://en.wikipedia.org/wiki/Method_stub). As with so many things in the coding world, "stub" can mean a few different (but similar) things. In this context, "stub" refers to a function that will _eventually_ do what you want it to do, but in the meantime it acts as a placeholder of sorts. It might look like:
@@ -188,7 +188,7 @@ function cellClicked(e) {
 ```
  
 Writing that pseudocode doesn't take long. It might take you a little longer when you're new to programming, but don't sweat it. Taking time to plan your journey before you start writing code saves you an _immense_ amount of time and frustration in the long run. **So remember to do it!**
-    </details>
+</details>
 
 ## Turning the pseudocode into CODE
 <details>
@@ -230,9 +230,9 @@ We're going to let you tackle writing the real contents of `cellClicked(e)` your
     Refer back to how we updated HTML text in the JavaScript Cafe challenge from Sprint 3.
  
 Once you've worked through those bullet points, you should now be able to play basic Tic-Tac-Toe! However, there's no winning yet. You can just put the X's and O's into the cells anywhere you want. You need to write an algorithm that looks through the array of cells and tries to find three in a row. Let's do it!
-    </details>
+</details>
 ## The checkForWin(symbol) function
- <details>
+<details>
 <summary><b>Expand checkForWin details</b></summary>
 So what's the first step when it comes to writing this new function? You guessed it, pseudocode! What might that look like?
  
@@ -293,7 +293,7 @@ function checkForWin(symbol) {
 ```
  
 Enjoy! Remember to reach out for help if you get stuck.
-    </details>
+</details>
 ## Bugs?
  
 All going well, you might have a working version of Tic-Tac-Toe now! Play it! Is anything not working how you think it should? Can you keep playing even if someone won the game? Bugs are absolutely unavoidable when you're programming. Don't panic! The process of going through your code, manually testing what you made, finding the mistakes and fixing them is a crucial skill. Practise it!
