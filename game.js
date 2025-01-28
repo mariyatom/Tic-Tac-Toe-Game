@@ -1,18 +1,31 @@
 console.log('Welcome to Tic-Tac-Toe! Enjoy!')
 
-let noughtsTurn = true
-
-let gameIsOver = false
-
+let noughtsTurn
+let gameIsOver
+startGame()
 let cells = document.getElementsByTagName('TD')
-// function sayHello() {
-//   console.log('hello')
-// }
-
-// cells[0].onclick = sayHello
 
 for (let i = 0; i < cells.length; i++) {
   cells[i].onclick = cellClicked
+}
+
+document.getElementById('restartButton').onclick = restartGame
+
+// Define sound effects
+const clickSound = new Audio('/assets/click.mp3')
+const winSound = new Audio('/assets/win.mp3')
+const stalemateSound = new Audio('/assets/stalemate.mp3')
+
+function startGame() {
+  // Randomly set the first player to either X or O
+  noughtsTurn = Math.random() < 0.5
+
+  gameIsOver = false
+
+  // Set the initial subtitle with the randomly chosen first player
+  document.getElementById('subtitle').textContent = `Turn: ${
+    noughtsTurn ? 'O' : 'X'
+  }`
 }
 
 function cellClicked(e) {
@@ -31,13 +44,14 @@ function cellClicked(e) {
   // switch to the other player (using the naughtsTurn boolean again)
 
   // update the subtitle saying whose turn it is now
+  if (gameIsOver) return
   let cell = e.target
-  console.log('i clicked on: ' + cell)
   if (cell.innerHTML != '') {
-    return // cell is already filled, do nothing more with this click event.  This prevents the game from crashing when the same cell is clicked twice.  It also prevents the same player from making the same move twice.  You can add more checks here if you want to.  For example, you could check if the clicked cell is already the winner's cell.  But for this simple game, we'll assume that the winning condition is just when all cells are filled with either "O" or "X".  If you want to add more complex win conditions, you'd need to modify this function accordingly.  You'd also need to add more cells to the board and check for the win condition in those cells as well.  Finally, you'd also need to add the winning condition to the checkForWin() function.  But that's a lot of work for a simple game.  For a simple game like this, it's usually easier to just
+    return // cell is already filled, do nothing more with this click event.
   }
   let symbol = noughtsTurn ? 'O' : 'X'
   cell.innerHTML = symbol
+  clickSound.play()
   checkForWin(symbol)
   if (!gameIsOver) {
     noughtsTurn = !noughtsTurn
@@ -123,5 +137,34 @@ function checkForWin(symbol) {
     document.getElementById(
       'subtitle'
     ).textContent = `The game is over, ${symbol} WON!`
+    winSound.play()
+    return
   }
+
+  checkForStaleMate()
+}
+
+function checkForStaleMate() {
+  let filledCells = 0
+  Array.from(cells).forEach((cell) => {
+    if (cell.innerHTML !== '') {
+      filledCells++
+    }
+  })
+
+  if (filledCells === cells.length && !gameIsOver) {
+    gameIsOver = true
+    document.getElementById('subtitle').textContent = 'STALEMATE! '
+    stalemateSound.play()
+    return
+  }
+}
+
+//Restart functionality
+function restartGame() {
+  Array.from(cells).forEach((cell) => {
+    cell.innerHTML = ''
+  })
+
+  startGame()
 }
