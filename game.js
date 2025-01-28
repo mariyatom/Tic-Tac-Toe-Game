@@ -2,6 +2,8 @@ console.log('Welcome to Tic-Tac-Toe! Enjoy!')
 
 let noughtsTurn
 let gameIsOver
+let xWins = 0
+let oWins = 0
 startGame()
 let cells = document.getElementsByTagName('TD')
 
@@ -138,6 +140,15 @@ function checkForWin(symbol) {
       'subtitle'
     ).textContent = `The game is over, ${symbol} WON!`
     winSound.play()
+
+    if (symbol === 'X') {
+      xWins++
+    } else {
+      oWins++
+    }
+    // Display the win tally
+    document.getElementById('xWins').textContent = `X Wins: ${xWins}`
+    document.getElementById('oWins').textContent = `O Wins: ${oWins}`
     return
   }
 
