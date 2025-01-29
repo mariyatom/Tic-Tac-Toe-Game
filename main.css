@@ -1,40 +1,134 @@
 /* Game board and text not responsive yet*/
 
 body {
-  background-color:white;
-  font-family: 'Permanent Marker', cursive;
+  background-color: black;
+  /* font-family: 'Permanent Marker', cursive; */
   text-align: center;
   margin-top: 40px;
-  }
-  
+}
+
 table {
-    margin-right: center;
-    margin-left: center;
-    margin: 0 auto;
-    border-spacing: 0;
-    border-collapse: collapse;
-  }
-  
+  margin-right: center;
+  margin-left: center;
+  margin: 0 auto;
+  border-spacing: 0;
+  /* border-collapse: collapse; */
+}
 
 h1 {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 2vw;
-    color: black;
-  }
-  
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 2vw;
+  color: white;
+}
+
 td {
-    width: 8vw;
-    height: 8vw;
-    text-align: center;
-    font-size: 300%;
-    border: black solid 3px;
-    color: black;
-  }
+  width: 8vw;
+  height: 8vw;
+  text-align: center;
+  font-size: 300%;
+  border: white solid 3px;
+  color: white;
+}
 
 h2 {
   text-align: center;
   font-size: 2vw;
-  color: #4c2c92;
-}  
+  color: rgb(103 128 227);
+}
+#restartButton {
+  background-color: #0b2178;
+  border: none;
+  color: white;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  float: left;
+}
+#restartButton img {
+  width: 20px;
+  height: 20px;
+}
+
+#restartButton:hover {
+  background-color: #03165a;
+}
+.restart-div {
+  float: inline-start;
+  width: 30%;
+}
+.tic-tac-head {
+  display: flex;
+  width: 100%;
+}
+.title-head {
+  width: 70%;
+}
+.title-head-h1 {
+  margin-left: 40%;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  width: 20%;
+  margin: auto;
+  text-align: center;
+}
+
+.grid-header {
+  font-weight: bold;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+.grid-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+  color: #03165a;
+}
+.first,
+.sec,
+.third {
+  border-top: none;
+}
+.third,
+.six,
+.nine {
+  border-right: none;
+}
+.nine,
+.eight,
+.sev {
+  border-bottom: none;
+}
+.first,
+.forth,
+.sev {
+  border-left: none;
+}
+@keyframes winningFlash {
+  0% {
+    color: rgb(144, 147, 238);
+    transform: scale(1);
+  }
+  50% {
+    color: rgb(66, 50, 205);
+    transform: scale(1.05);
+  }
+  100% {
+    color: rgb(174, 144, 238);
+    transform: scale(1);
+  }
+}
+
+.winning-cell {
+  animation: winningFlash 0.6s ease-in-out infinite alternate;
+}

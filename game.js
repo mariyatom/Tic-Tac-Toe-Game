@@ -4,6 +4,7 @@ let noughtsTurn
 let gameIsOver
 let xWins = 0
 let oWins = 0
+let tieStalemate = 0
 startGame()
 let cells = document.getElementsByTagName('TD')
 
@@ -30,22 +31,15 @@ function startGame() {
   }`
 }
 
+/** create a variable for the clicked cell so I can do stuff with it
+ * if the cell is empty (check it's .innerHTML property)
+ * figure out which symbol to put inside the cell ("O" or "X" based on the naughtsTurn boolean)
+ * put the symbol inside the cell (by using .innerHTML again)
+ * check to see if the player won with that move (probably using a new function, like checkForWin() which I'll need to write later)
+ * if the game isn't over
+ * switch to the other player (using the naughtsTurn boolean again)
+ * update the subtitle saying whose turn it is now */
 function cellClicked(e) {
-  // create a variable for the clicked cell so I can do stuff with it
-
-  // if the cell is empty (check it's .innerHTML property)
-
-  // figure out which symbol to put inside the cell ("O" or "X" based on the naughtsTurn boolean)
-
-  // put the symbol inside the cell (by using .innerHTML again)
-
-  // check to see if the player won with that move (probably using a new function, like checkForWin() which I'll need to write later)
-
-  // if the game isn't over
-
-  // switch to the other player (using the naughtsTurn boolean again)
-
-  // update the subtitle saying whose turn it is now
   if (gameIsOver) return
   let cell = e.target
   if (cell.innerHTML != '') {
@@ -64,77 +58,39 @@ function cellClicked(e) {
 }
 
 /// check to see if the player won with the move
+// if a symbol appears three times in a row in the board cells i.e. a winning line
+// either horizontally, vertically, OR diagonally
+// the game is over
+// if the game is over
+// update the subtitle with the winner
 function checkForWin(symbol) {
-  // if a symbol appears three times in a row in the board cells i.e. a winning line
-  // either horizontally, vertically, OR diagonally
-  // the game is over
-  // if the game is over
-  // update the subtitle with the winner
-  //-------------------------------
-  // HORIZONTAL LINES //
+  let wonCombination = null
 
-  if (
-    cells[0].innerHTML == symbol &&
-    cells[1].innerHTML == symbol &&
-    cells[2].innerHTML == symbol
-  )
-    gameIsOver = true
-  else if (
-    cells[3].innerHTML == symbol &&
-    cells[4].innerHTML == symbol &&
-    cells[5].innerHTML == symbol
-  )
-    gameIsOver = true
-  else if (
-    cells[6].innerHTML == symbol &&
-    cells[7].innerHTML == symbol &&
-    cells[8].innerHTML == symbol
-  )
-    gameIsOver = true
+  const gameWinPatterns = [
+    [0, 1, 2], // Horizontal
+    [3, 4, 5], // Horizontal
+    [6, 7, 8], // Horizontal
+    [0, 3, 6], // Vertical
+    [1, 4, 7], // Vertical
+    [2, 5, 8], // Vertical
+    [0, 4, 8], // Diagonal
+    [2, 4, 6], // Diagonal
+  ]
+  for (let pattern of gameWinPatterns) {
+    let [a, b, c] = pattern
 
-  // VERTICAL LINES //
-
-  if (
-    cells[0].innerHTML == symbol &&
-    cells[3].innerHTML == symbol &&
-    cells[6].innerHTML == symbol
-  ) {
-    gameIsOver = true
-  }
-  if (
-    cells[1].innerHTML == symbol &&
-    cells[4].innerHTML == symbol &&
-    cells[7].innerHTML == symbol
-  ) {
-    gameIsOver = true
-  }
-  if (
-    cells[2].innerHTML == symbol &&
-    cells[5].innerHTML == symbol &&
-    cells[8].innerHTML == symbol
-  ) {
-    gameIsOver = true
+    if (
+      cells[a].textContent === symbol &&
+      cells[b].textContent === symbol &&
+      cells[c].textContent === symbol
+    ) {
+      gameIsOver = true
+      wonCombination = [cells[a], cells[b], cells[c]]
+    }
   }
 
-  // DIAGONAL LINES //
-
-  if (
-    cells[0].innerHTML == symbol &&
-    cells[4].innerHTML == symbol &&
-    cells[8].innerHTML == symbol
-  ) {
-    gameIsOver = true
-  }
-  if (
-    cells[2].innerHTML == symbol &&
-    cells[4].innerHTML == symbol &&
-    cells[6].innerHTML == symbol
-  ) {
-    gameIsOver = true
-  }
-  // ...
-
-  if (gameIsOver) {
+  if (gameIsOver && wonCombination) {
+    wonCombination.forEach((cell) => cell.classList.add('winning-cell'))
     // update the subtitle with the winner
     document.getElementById(
       'subtitle'
@@ -147,8 +103,8 @@ function checkForWin(symbol) {
       oWins++
     }
     // Display the win tally
-    document.getElementById('xWins').textContent = `X Wins: ${xWins}`
-    document.getElementById('oWins').textContent = `O Wins: ${oWins}`
+    document.getElementById('xWins').textContent = `${xWins}`
+    document.getElementById('oWins').textContent = `${oWins}`
     return
   }
 
@@ -167,6 +123,8 @@ function checkForStaleMate() {
     gameIsOver = true
     document.getElementById('subtitle').textContent = 'STALEMATE! '
     stalemateSound.play()
+    tieStalemate++
+    document.getElementById('tie-stalemate').textContent = `${tieStalemate}`
     return
   }
 }
@@ -175,6 +133,7 @@ function checkForStaleMate() {
 function restartGame() {
   Array.from(cells).forEach((cell) => {
     cell.innerHTML = ''
+    cell.classList.remove('winning-cell')
   })
 
   startGame()

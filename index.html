@@ -7,34 +7,51 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="main.css" />
+    <title>Tic-Tac-Toe</title>
   </head>
 
   <body>
-    <h1>Tic-Tac-Toe</h1>
+    <div class="tic-tac-head">
+      <div class="title-head"><h1 class="title-head-h1">Tic-Tac-Toe</h1></div>
+      <div class="restart-div">
+        <button id="restartButton">
+          <img
+            src="https://img.icons8.com/ios-filled/50/FFFFFF/restart.png"
+            alt="Restart Icon"
+          />
+        </button>
+      </div>
+    </div>
     <br />
+
     <table>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="first"></td>
+        <td class="sec"></td>
+        <td class="third"></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="forth"></td>
+        <td class="fivth"></td>
+        <td class="six"></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="sev"></td>
+        <td class="eight"></td>
+        <td class="nine"></td>
       </tr>
     </table>
-    <h2 id="subtitle">Click on a cell to start!</h2>
-    <button id="restartButton">Restart Game</button>
 
-    <div>
-      <h3 id="xWins">X Wins: 0</h3>
-      <h3 id="oWins">O Wins: 0</h3>
+    <h2 id="subtitle">Click on a cell to start!</h2>
+
+    <div class="grid-container">
+      <div class="grid-header">Player (X)</div>
+      <div class="grid-header">Player (O)</div>
+      <div class="grid-header">Tie</div>
+
+      <div class="grid-item" id="xWins"></div>
+      <div class="grid-item" id="oWins"></div>
+      <div class="grid-item" id="tie-stalemate"></div>
     </div>
 
     <script src="game.js"></script>
