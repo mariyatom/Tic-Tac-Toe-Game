@@ -15,9 +15,9 @@ for (let i = 0; i < cells.length; i++) {
 document.getElementById('restartButton').onclick = restartGame
 
 // Define sound effects
-const clickSound = new Audio('/assets/click.mp3')
-const winSound = new Audio('/assets/win.mp3')
-const stalemateSound = new Audio('/assets/stalemate.mp3')
+const clickSound = new Audio('./assets/click.mp3')
+const winSound = new Audio('./assets/win.mp3')
+const stalemateSound = new Audio('./assets/stalemate.mp3')
 
 function startGame() {
   // Randomly set the first player to either X or O
